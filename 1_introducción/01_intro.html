@@ -304,7 +304,7 @@ print(read_csv)</code></pre>
 <p><br></p>
 <div id="a.-vectores" class="section level4">
 <h4>a. Vectores</h4>
-<p>Los vectores son estructras de datos de una dimensión. A continuación se describen características de éstos.</p>
+<p>Los vectores son estructras de datos de una dimensión. Un vector se define con la función <code>c()</code>, que concatena diferentes elementos del mismo tipo, esto determina el tipo del vector.</p>
 <p><br></p>
 <div id="tipos-de-vectores" class="section level5">
 <h5>Tipos de vectores</h5>
@@ -315,6 +315,7 @@ print(read_csv)</code></pre>
 <pre class="r"><code>a &lt;- c(1,2.5,3,4.5,5,6.9)
 a</code></pre>
 <pre><code>## [1] 1.0 2.5 3.0 4.5 5.0 6.9</code></pre>
+<p><strong>Nota:</strong> En R el vector la asignación de un nombre se realiza con el símbolo <code>&lt;-</code>. Se recomienda usar el shortcut <strong>alt + -</strong> genera <code>&lt;-</code>.</p>
 <ul>
 <li><strong>Vectores lógicos</strong>:</li>
 </ul>
@@ -334,7 +335,6 @@ fruits[str_detect(fruits,pattern = 'w')]</code></pre>
 <pre><code>## [1] &quot;kiwi&quot;</code></pre>
 <pre class="r"><code>fruits[str_order(fruits)]</code></pre>
 <pre><code>## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;kiwi&quot;      &quot;lemon&quot;     &quot;orange&quot;    &quot;pineapple&quot;</code></pre>
-<p><strong>Nota:</strong> En R el vector la asignación de un nombre se realiza con el símbolo <code>&lt;-</code>. Se recomienda usar el shortcut <em>alt + -</em> genera <code>&lt;-</code>.</p>
 <p><br></p>
 </div>
 <div id="operaciones-de-vectores" class="section level5">
@@ -362,20 +362,33 @@ a == x</code></pre>
 <ul>
 <li>Funciones predeterminadas:</li>
 </ul>
-<p>Algunas funciones predeterminadas del paquete básico de R son muy útiles para el análisis de datos. A continuación se enlistan las más comúnes:</p>
+<p>Algunas funciones predeterminadas del paquete básico de R son muy útiles para el análisis de datos. A continuación se enlistan algunas de las más comúnes:</p>
 <ul>
-<li><code>sum</code>: suma de los elementos del vector</li>
 <li><code>length</code>: número de elementos en el vector</li>
 <li><code>class</code>: clase del vector</li>
 <li><code>summary</code>: resumen de información del vector</li>
+<li><code>unique</code>: valores unicos del vector</li>
+<li><code>table</code>: tabla de frecuencias para cada elemento del vector</li>
+<li><code>sum</code>: suma de los elementos del vector</li>
 <li><code>mean</code>: promedio de elementos del vector</li>
 <li><code>sd</code>: desviación estándar de los elementos del vector</li>
 <li><code>cumsum</code>: suma acumulada de elemento anterior del vector</li>
-<li><code>table</code>: tabla de frecuencias para cada elemento del vector</li>
 </ul>
 <blockquote>
 <p><code>Ejercicio</code>: Apliquen las funciones comúnes enlistadas antes en el vector <code>x &lt;- c(1, 2, 3, 4, 5, 6)</code></p>
 </blockquote>
+<blockquote>
+<p><code>Respuesta</code>:</p>
+</blockquote>
+<pre class="r"><code>length(x) # número de elementos en el vector
+class(x) # clase del vector
+summary(x) # resumen de información del vector
+unique(x) # tabla de frecuencias para cada elemento del vector
+table(x) # tabla de frecuencias para cada elemento del vector
+sum(x) # suma de los elementos del vector
+mean(x) # promedio de elementos del vector
+sd(x) # desviación estándar de los elementos del vector
+cumsum(x) # suma acumulada de elemento anterior del vector</code></pre>
 <p><br></p>
 <p>La selección de elementos de un vector se realiza con <strong><code>[ ]</code></strong> para indicar la posición. A diferencia de otros lenguajes de programación las posiciones en R incian en 1.</p>
 <pre class="r"><code>fruits[1]</code></pre>
@@ -385,13 +398,19 @@ a == x</code></pre>
 <p>En R es posible extraer un valor del vector indexandolo con posiciones negativas:</p>
 <pre class="r"><code>fruits[-1]</code></pre>
 <pre><code>## [1] &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;kiwi&quot;</code></pre>
+<p>Es posible nombrar cada elemento del vector con la función <code>names()</code>:</p>
+<pre class="r"><code>fruits &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;pineapple&quot;, &quot;lemon&quot;, &quot;kiwi&quot;)
+names(fruits) &lt;- c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi')
+fruits</code></pre>
+<pre><code>##     manzana     platano     naranja        piña       limón        kiwi 
+##     &quot;apple&quot;    &quot;banana&quot;    &quot;orange&quot; &quot;pineapple&quot;     &quot;lemon&quot;      &quot;kiwi&quot;</code></pre>
 <p><br></p>
 </div>
 <div id="otros-tipos-de-vectores" class="section level5">
 <h5>Otros tipos de vectores:</h5>
 <p>Existen tipos de vectores con características importantes:</p>
 <ul>
-<li><strong>Secuencias</strong>: vectores de secuencias se pueden crear de la siguiente forma:</li>
+<li><strong>Secuencias</strong>: los vectores de secuencias se pueden crear con la función <code>seq()</code> o <code>:</code>, de la siguiente forma:</li>
 </ul>
 <pre class="r"><code>1:10</code></pre>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
@@ -416,7 +435,8 @@ tenweeks</code></pre>
 <pre class="r"><code>fruits &lt;- c(&quot;banana&quot;, fruits, &quot;apple&quot;)
 fruits.fac &lt;- factor(fruits, 
                      levels = c(&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;pineapple&quot;, &quot;lemon&quot;, &quot;kiwi&quot;),
-                     labels = c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi'))
+                     labels = c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi')
+                     )
 fruits.fac</code></pre>
 <pre><code>## [1] platano manzana platano naranja piña    limón   kiwi    manzana
 ## Levels: manzana platano naranja piña limón kiwi</code></pre>
@@ -432,9 +452,21 @@ fruits.fac</code></pre>
 </blockquote>
 <pre class="r"><code>frutas &lt;- factor(
   c(&quot;pineapple&quot;, &quot;apple&quot;, &quot;banana&quot;, &quot;pineapple&quot;, &quot;kiwi&quot;, &quot;apple&quot;, &quot;kiwi&quot;, &quot;kiwi&quot;),
-  levels = c(&quot;apple&quot;, &quot;banana&quot;, &quot;pineapple&quot;, &quot;kiwi&quot;, &quot;watermelon&quot;),
-  labels = c('manzana', 'platano', 'piña', 'kiwi', 'sandía')
+  levels = c(&quot;apple&quot;, &quot;banana&quot;, &quot;pineapple&quot;, &quot;kiwi&quot;, &quot;watermelon&quot;, &quot;melon&quot;),
+  labels = c('manzana', 'platano', 'piña', 'kiwi', 'sandía', 'melon')
   )</code></pre>
+<blockquote>
+<p><code>Respuesta</code>:</p>
+</blockquote>
+<pre class="r"><code>length(frutas) # número de elementos en el vector
+class(frutas) # clase del vector
+summary(frutas) # resumen de información del vector
+sum(frutas) # suma de los elementos del vector
+mean(frutas) # promedio de elementos del vector
+sd(frutas) # desviación estándar de los elementos del vector
+cumsum(frutas) # suma acumulada de elemento anterior del vector
+table(frutas) # tabla de frecuencias para cada elemento del vector
+unique(frutas) # tabla de frecuencias para cada elemento del vector</code></pre>
 <p><br></p>
 </div>
 </div>
@@ -562,33 +594,33 @@ tabla</code></pre>
   valor = runif(6)
 )
 tabla</code></pre>
-<pre><code>##   n    frutas     valor
-## 1 1     apple 0.5633489
-## 2 2    banana 0.2437683
-## 3 3    orange 0.9903828
-## 4 4 pineapple 0.7349036
-## 5 5     lemon 0.1099567
-## 6 6     apple 0.2727932</code></pre>
+<pre><code>##   n    frutas      valor
+## 1 1     apple 0.93133775
+## 2 2    banana 0.83486193
+## 3 3    orange 0.94827698
+## 4 4 pineapple 0.74279736
+## 5 5     lemon 0.08544522
+## 6 6     apple 0.52409685</code></pre>
 <pre class="r"><code>tabla.color &lt;-  data.frame(
   peso = rnorm(6),
   color =   c('rojo', 'amarillo', 'naranje', 'amarillo', 'amarillo', 'rojo')
 )
 tabla.color</code></pre>
-<pre><code>##           peso    color
-## 1 -0.671099318     rojo
-## 2 -0.969744085 amarillo
-## 3 -1.807539579  naranje
-## 4  0.001067353 amarillo
-## 5  0.286853744 amarillo
-## 6 -1.027064222     rojo</code></pre>
+<pre><code>##          peso    color
+## 1 -0.01778279     rojo
+## 2  0.07508758 amarillo
+## 3 -0.66812917  naranje
+## 4  0.69591081 amarillo
+## 5  0.76923507 amarillo
+## 6 -0.35490042     rojo</code></pre>
 <pre class="r"><code>cbind(tabla, tabla.color)</code></pre>
-<pre><code>##   n    frutas     valor         peso    color
-## 1 1     apple 0.5633489 -0.671099318     rojo
-## 2 2    banana 0.2437683 -0.969744085 amarillo
-## 3 3    orange 0.9903828 -1.807539579  naranje
-## 4 4 pineapple 0.7349036  0.001067353 amarillo
-## 5 5     lemon 0.1099567  0.286853744 amarillo
-## 6 6     apple 0.2727932 -1.027064222     rojo</code></pre>
+<pre><code>##   n    frutas      valor        peso    color
+## 1 1     apple 0.93133775 -0.01778279     rojo
+## 2 2    banana 0.83486193  0.07508758 amarillo
+## 3 3    orange 0.94827698 -0.66812917  naranje
+## 4 4 pineapple 0.74279736  0.69591081 amarillo
+## 5 5     lemon 0.08544522  0.76923507 amarillo
+## 6 6     apple 0.52409685 -0.35490042     rojo</code></pre>
 <p><strong>Nota:</strong> Una forma de seleccionar una columna es con el símbolo <strong>$</strong> y el nombre de la columna.</p>
 <blockquote>
 <p><code>Ejercicio</code>: Del data.frame <strong>mtcars</strong> realiza lo siguiente:</p>
@@ -599,6 +631,17 @@ tabla.color</code></pre>
 <li>Calcula el promedio de millas por galón <em>mpg</em> de los autos <em>Merc</em>.</li>
 </ol>
 </blockquote>
+<blockquote>
+<p><code>Respuesta</code>:</p>
+</blockquote>
+<pre class="r"><code># 1. Calcula el promedio de cilindros en los datos.
+mean(mtcars$cyl)
+# 2. Calcula el número de autos con peso mayor a 4
+nrow(mtcars[mtcars$wt &gt; 4,])
+# 3. Extrae la información de los coches _Merc_.
+mtcars[str_detect(rownames(mtcars), &quot;Merc&quot;), ]
+# 4. Calcula el promedio de millas por galón _mpg_ de los autos _Merc_.
+mean(mtcars[str_detect(rownames(mtcars), &quot;Merc&quot;), &quot;mpg&quot;])</code></pre>
 <p><br></p>
 </div>
 <div id="c.-listas" class="section level4">
@@ -619,13 +662,13 @@ lista</code></pre>
 ## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;apple&quot;    
 ## 
 ## $tabla
-##   n    frutas     valor
-## 1 1     apple 0.5633489
-## 2 2    banana 0.2437683
-## 3 3    orange 0.9903828
-## 4 4 pineapple 0.7349036
-## 5 5     lemon 0.1099567
-## 6 6     apple 0.2727932
+##   n    frutas      valor
+## 1 1     apple 0.93133775
+## 2 2    banana 0.83486193
+## 3 3    orange 0.94827698
+## 4 4 pineapple 0.74279736
+## 5 5     lemon 0.08544522
+## 6 6     apple 0.52409685
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -734,25 +777,25 @@ sapply(x, wtd_mean)</code></pre>
 <p>Hay muchas maneras de <strong>ingresar</strong> datos en R, un paquete muy conveniente es <strong>readr</strong>. Este se utiliza para leer archivos de texto, uno de los formatos más comunes de datos es csv (comma separated values), cualquier hoja de excel se puede extraer en este formato.</p>
 <p>Cargamos el paquete y leemos un archivo de nombres de bebés en EUA:</p>
 <pre class="r"><code>library(readr)
-bnames &lt;- read_csv(file = &quot;data/bnames.csv&quot;)</code></pre>
+bnames &lt;- read_csv(file = &quot;data/bnames2.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   year = col_integer(),
 ##   name = col_character(),
 ##   percent = col_double(),
-##   sex = col_character()
+##   sex = col_double()
 ## )</code></pre>
 <pre class="r"><code>head(bnames)</code></pre>
 <pre><code>## Source: local data frame [6 x 4]
 ## 
 ##    year    name  percent   sex
-##   &lt;int&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;
-## 1  1880    John 0.081541   boy
-## 2  1880 William 0.080511   boy
-## 3  1880   James 0.050057   boy
-## 4  1880 Charles 0.045167   boy
-## 5  1880  George 0.043292   boy
-## 6  1880   Frank 0.027380   boy</code></pre>
+##   &lt;int&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+## 1  1880    John 0.081541     1
+## 2  1880 William 0.080511     1
+## 3  1880   James 0.050057     1
+## 4  1880 Charles 0.045167     1
+## 5  1880  George 0.043292     1
+## 6  1880   Frank 0.027380     1</code></pre>
 <p>La función <code>read_csv</code> tiene como argumento la ruta a la base de datos, esta puede ser absoluta o relativa. Para usar rutas relativas es necesario saber cual es nuestro directorio de trabajo, para esto ejecutamos <code>getwd</code>:</p>
 <pre class="r"><code>getwd()</code></pre>
 <pre><code>## [1] &quot;/Users/soniamendizabal/Documents/escuela/semestre_1/intro_r/R_intro/1_introducción&quot;</code></pre>
@@ -767,23 +810,55 @@ bnames &lt;- read_csv(file = &quot;data/bnames.csv&quot;)</code></pre>
 <li>También es posible guardar objetos creados en R usando <code>saveRDS</code> y volverlos a leer con <code>read_rds</code>. Este tipo de almacenamiento es más confiable y la lectura de los datos es más rápida:</li>
 </ol>
 <pre class="r"><code>saveRDS(object = tabla, file = &quot;ejemplo_tabla.Rds&quot;)</code></pre>
+<p><br></p>
+<hr />
 </div>
-</div>
-<div id="section" class="section level2">
-<h2><br></h2>
-<div id="i.-introduccion-a-r-1" class="section level3">
-<h3>I. Introducción a R</h3>
+<div id="ejercicio-i.-introduccion-a-r" class="section level3">
+<h3>EJERCICIO I. Introducción a R</h3>
 <blockquote>
 <p><code>Ejercicio</code>:</p>
 <ol style="list-style-type: decimal">
 <li>Leer datos <code>bnames2.csv</code></li>
 <li>Dimensión, clase, tipo de variables de <code>bnames2</code></li>
 <li>¿De que año a que año se tiene información de los nombres?</li>
-<li>Recodificar la varible <code>sex</code> donde 1 = <em>boy</em> y 2 = <em>girl</em></li>
+<li>Sustituir la varible <code>sex</code> con un factor donde 1 = <em>boy</em> y 2 = <em>girl</em>.</li>
 <li>¿Cuál es el nombre con mayor frecuencia para niña en 2005?</li>
-<li>Para cada año par de 1988 a 2008 ¿cual es el nombre con mayor frecuencia? Tip: usa funciones iterativas</li>
+<li>Obten un vector con el nombre de niña con mayor frecuencia para cada año par de 1988 a 2008. (Tip: Realiza una función y usa funciones iterativas).</li>
+<li>Obten las frecuencias de cada nombre del vector del paso (6). y ordenalo de mayor a menor</li>
 </ol>
 </blockquote>
+<blockquote>
+<p><code>Respuesta</code>:</p>
+</blockquote>
+<pre class="r"><code># 1. 
+library(readr)
+bnames &lt;- read_csv('data/bnames2.csv')
+
+# 2. 
+str(bnames) # dimensión y tipo de variable
+class(bnames) # clase de objeto
+
+# 3. 
+summary(bnames$year)
+
+# 4. 
+bnames$sex &lt;- factor(bnames$sex, levels = 1:2, labels = c('boy', 'girl'))
+
+# 5. 
+tab.girl.2005 &lt;- bnames[bnames$year == 2005 &amp; bnames$sex == 'girl',]
+tab.girl.2005[ tab.girl.2005$percent == max(tab.girl.2005$percent), ]
+
+# 6. 
+MaxName &lt;- function(yr){
+  sub &lt;- bnames[bnames$year == yr &amp; bnames$sex == 'girl',]
+  sub$name[which.max(sub$percent)]
+}
+noms.max &lt;- sapply(seq(1988, 2008, by = 2), MaxName)
+names(noms.max) &lt;- seq(1988, 2008, by = 2)
+noms.max
+
+# 7. 
+sort(table(noms.max), decreasing = T)</code></pre>
 </div>
 </div>
 
