@@ -124,7 +124,7 @@ $(document).ready(function () {
 
 <hr />
 <blockquote>
-<p>Las notas de este curso introductorio están basadas en el material de los profesores Andreu Boada, Luis Felipe González y Teresa Ortiz. Así como en el tutorial del Hadley Wickham y Garret Grolemund “R for Data Science”.</p>
+<p>Las notas de este curso introductorio están basadas en el material de los profesores Ernesto Barrios, Andreu Boada, Luis Felipe González y Teresa Ortiz. Así como en el tutorial del Hadley Wickham y Garret Grolemund “R for Data Science”.</p>
 </blockquote>
 <hr />
 <div id="temario" class="section level2">
@@ -543,12 +543,58 @@ tabla</code></pre>
 ## Merc 280       19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
 ## Merc 280C      17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
 ## Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</code></pre>
+<ul>
+<li><code>rbind</code> permite unir dos data.frames por renglones, si y solo si, tiene el mismo número de columnas:</li>
+</ul>
+<pre class="r"><code>rbind(mtcars[str_detect(rownames(mtcars), &quot;Mazda&quot; ), ], 
+      mtcars[str_detect(rownames(mtcars), &quot;Hornet&quot; ), ])</code></pre>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+<ul>
+<li><code>cbind</code> permite unir dos data.frames por columna, si y solo si, tiene el mismo número de renglones:</li>
+</ul>
+<pre class="r"><code>tabla &lt;- data.frame(
+  n = 1:6,
+  frutas = fruits &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;pineapple&quot;, &quot;lemon&quot;, &quot;apple&quot;), 
+  valor = runif(6)
+)
+tabla</code></pre>
+<pre><code>##   n    frutas     valor
+## 1 1     apple 0.5633489
+## 2 2    banana 0.2437683
+## 3 3    orange 0.9903828
+## 4 4 pineapple 0.7349036
+## 5 5     lemon 0.1099567
+## 6 6     apple 0.2727932</code></pre>
+<pre class="r"><code>tabla.color &lt;-  data.frame(
+  peso = rnorm(6),
+  color =   c('rojo', 'amarillo', 'naranje', 'amarillo', 'amarillo', 'rojo')
+)
+tabla.color</code></pre>
+<pre><code>##           peso    color
+## 1 -0.671099318     rojo
+## 2 -0.969744085 amarillo
+## 3 -1.807539579  naranje
+## 4  0.001067353 amarillo
+## 5  0.286853744 amarillo
+## 6 -1.027064222     rojo</code></pre>
+<pre class="r"><code>cbind(tabla, tabla.color)</code></pre>
+<pre><code>##   n    frutas     valor         peso    color
+## 1 1     apple 0.5633489 -0.671099318     rojo
+## 2 2    banana 0.2437683 -0.969744085 amarillo
+## 3 3    orange 0.9903828 -1.807539579  naranje
+## 4 4 pineapple 0.7349036  0.001067353 amarillo
+## 5 5     lemon 0.1099567  0.286853744 amarillo
+## 6 6     apple 0.2727932 -1.027064222     rojo</code></pre>
 <p><strong>Nota:</strong> Una forma de seleccionar una columna es con el símbolo <strong>$</strong> y el nombre de la columna.</p>
 <blockquote>
 <p><code>Ejercicio</code>: Del data.frame <strong>mtcars</strong> realiza lo siguiente:</p>
 <ol style="list-style-type: decimal">
 <li>Calcula el promedio de cilindros <em>cyl</em> en los datos.</li>
-<li>Calcula el número de autos con peso <em>wt</em> mayor a 20.</li>
+<li>Calcula el número de autos con peso <em>wt</em> mayor a 2.</li>
 <li>Extrae la información de los coches <em>Merc</em>.</li>
 <li>Calcula el promedio de millas por galón <em>mpg</em> de los autos <em>Merc</em>.</li>
 </ol>
@@ -570,17 +616,16 @@ lista</code></pre>
 ## [1] &quot;hello&quot;
 ## 
 ## $frutas
-## [1] &quot;banana&quot;    &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;    
-## [7] &quot;kiwi&quot;      &quot;apple&quot;    
+## [1] &quot;apple&quot;     &quot;banana&quot;    &quot;orange&quot;    &quot;pineapple&quot; &quot;lemon&quot;     &quot;apple&quot;    
 ## 
 ## $tabla
-##   n    frutas valor
-## 1 1    banana   1.0
-## 2 2     apple   2.5
-## 3 3    banana   3.0
-## 4 4    orange   4.5
-## 5 5 pineapple   5.0
-## 6 6     lemon   6.9
+##   n    frutas     valor
+## 1 1     apple 0.5633489
+## 2 2    banana 0.2437683
+## 3 3    orange 0.9903828
+## 4 4 pineapple 0.7349036
+## 5 5     lemon 0.1099567
+## 6 6     apple 0.2727932
 ## 
 ## $ejemlista
 ## $ejemlista$a
@@ -710,7 +755,7 @@ bnames &lt;- read_csv(file = &quot;data/bnames.csv&quot;)</code></pre>
 ## 6  1880   Frank 0.027380   boy</code></pre>
 <p>La función <code>read_csv</code> tiene como argumento la ruta a la base de datos, esta puede ser absoluta o relativa. Para usar rutas relativas es necesario saber cual es nuestro directorio de trabajo, para esto ejecutamos <code>getwd</code>:</p>
 <pre class="r"><code>getwd()</code></pre>
-<pre><code>## [1] &quot;/Users/soniamendizabal/Documents/escuela/semestre_1/intro_r/data_analysis/1_introducción&quot;</code></pre>
+<pre><code>## [1] &quot;/Users/soniamendizabal/Documents/escuela/semestre_1/intro_r/R_intro/1_introducción&quot;</code></pre>
 <p>Si el directorio de trabajo no es el que se desea, la función <code>setwd</code> permite cambiarlo.</p>
 <p><br></p>
 <p>Es posible <strong>guardar</strong> objetos en distintos formatos, que dependerá del uso que se le desee dar.</p>
@@ -722,7 +767,23 @@ bnames &lt;- read_csv(file = &quot;data/bnames.csv&quot;)</code></pre>
 <li>También es posible guardar objetos creados en R usando <code>saveRDS</code> y volverlos a leer con <code>read_rds</code>. Este tipo de almacenamiento es más confiable y la lectura de los datos es más rápida:</li>
 </ol>
 <pre class="r"><code>saveRDS(object = tabla, file = &quot;ejemplo_tabla.Rds&quot;)</code></pre>
-<hr />
+</div>
+</div>
+<div id="section" class="section level2">
+<h2><br></h2>
+<div id="i.-introduccion-a-r-1" class="section level3">
+<h3>I. Introducción a R</h3>
+<blockquote>
+<p><code>Ejercicio</code>:</p>
+<ol style="list-style-type: decimal">
+<li>Leer datos <code>bnames2.csv</code></li>
+<li>Dimensión, clase, tipo de variables de <code>bnames2</code></li>
+<li>¿De que año a que año se tiene información de los nombres?</li>
+<li>Recodificar la varible <code>sex</code> donde 1 = <em>boy</em> y 2 = <em>girl</em></li>
+<li>¿Cuál es el nombre con mayor frecuencia para niña en 2005?</li>
+<li>Para cada año par de 1988 a 2008 ¿cual es el nombre con mayor frecuencia? Tip: usa funciones iterativas</li>
+</ol>
+</blockquote>
 </div>
 </div>
 
