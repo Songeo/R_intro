@@ -804,6 +804,8 @@ head(specdata)</code></pre>
 <p><br></p>
 <blockquote>
 <p><code>Ejercicio:</code></p>
+</blockquote>
+<blockquote>
 <p>I. Obten los datos del problema común <strong>e.</strong> de specdata y obten <strong>una</strong> gráfica de la serie por tipo de medida: <strong>nitrate</strong> y <strong>sulfate</strong> para un monitor cualquiera. Coloreando cada serie por tipo de medida. Agrega la siguiente función <code>scale_y_log10()</code> a la gráfica anterior ¿qué sucede?</p>
 </blockquote>
 <blockquote>
@@ -816,28 +818,6 @@ head(specdata)</code></pre>
 <li>Separa <strong>sexuponoutcome</strong> para obtener una variable del sexo del animal. (Sugerencia: usa <code>separate()</code>)</li>
 <li>Obten el día de la semana y el mes en el que el animal fue adoptado.</li>
 </ol>
-<p>Una vez que tienes la base en la forma <em>limpia</em> podemos analizar:</p>
-<ol style="list-style-type: decimal">
-<li>Realiza una gráfica de dispersión con suavizamiento de días de la semana por número de salidas coloreando por tipo de salida. (Tip: Obten una tabla de frecuencias por <strong>weekday</strong> y <strong>outcometype</strong> usando las funciones <code>group_by()</code> y <code>tally()</code>)</li>
-<li>Una vez que tienes la tabla de frecuencias intenta adaptar el código para que puedas obtener la gráfica de calor. ¿Qué observas?</li>
-</ol>
-</blockquote>
-<pre class="r"><code>ggplot(tab.freq, 
-       aes(x = outcometype, y = wdays, 
-           fill = n)) + 
-  geom_tile(colour = &quot;white&quot;) + 
-  scale_fill_gradient(low = &quot;white&quot;, high = &quot;steelblue&quot;) + 
-  ylab(NULL) + xlab(NULL) + 
-  ggtitle('Tipos de Egresos')</code></pre>
-<blockquote>
-<ol start="3" style="list-style-type: decimal">
-<li>Únicamente para los animales adoptados:</li>
-</ol>
-<ul>
-<li>Histograma de la edad de adopción</li>
-<li>Histograma de la edad de adopción por género</li>
-<li>Boxplot de la edad de adopción por tipo de animal</li>
-</ul>
 </blockquote>
 <blockquote>
 <ol start="3" style="list-style-type: upper-roman">
@@ -953,6 +933,7 @@ xor(a, b)</code></pre>
 <p>Por ejemplo:</p>
 <pre class="r"><code>select(df_ej, starts_with(&quot;g&quot;))
 select(df_ej, contains(&quot;g&quot;))</code></pre>
+<p><br></p>
 </div>
 <div id="arreglar" class="section level4">
 <h4>- Arreglar</h4>
@@ -971,6 +952,7 @@ select(df_ej, contains(&quot;g&quot;))</code></pre>
 ## 3 hombre     1.67
 ## 4  mujer     1.65
 ## 5  mujer     1.60</code></pre>
+<p><br></p>
 </div>
 <div id="mutar" class="section level4">
 <h4>- Mutar</h4>
@@ -991,6 +973,7 @@ select(df_ej, contains(&quot;g&quot;))</code></pre>
 ## 3  mujer     1.70         170     66.9290
 ## 4  mujer     1.60         160     62.9920
 ## 5 hombre     1.67         167     65.7479</code></pre>
+<p><br></p>
 </div>
 <div id="resumenes-por-grupo" class="section level4">
 <h4>- Resúmenes por Grupo</h4>
@@ -1061,7 +1044,31 @@ ggplot(tab.coefs, aes(x = intercept, y = displ,
 <p><br></p>
 <blockquote>
 <p><code>Ejercicio:</code></p>
-<p>Para este ejercicio usaremos el paquete <code>nycflights13</code> que tiene información de los vuelos que salieron de NYC (e.g. EWR, JFK and LGA) en 2013. El nombre de la base es <code>flights</code>.</p>
+</blockquote>
+<blockquote>
+<p>I. De los datos obtenidos de adopciones que ya trabajaste en el ejercicio anterior para tenerla en forma <em>limpia</em>, ahora podemos analizar:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Realiza una gráfica de dispersión con suavizamiento de días de la semana por número de salidas coloreando por tipo de salida. (Tip: Obten una tabla de frecuencias por <strong>weekday</strong> y <strong>outcometype</strong> usando las funciones <code>group_by()</code> y <code>tally()</code>)</li>
+<li>Una vez que tienes la tabla de frecuencias intenta adaptar el código para que puedas obtener la gráfica de calor. ¿Qué observas?</li>
+<li>Únicamente para los animales adoptados:</li>
+</ol>
+<ul>
+<li>Histograma de la edad de adopción</li>
+<li>Histograma de la edad de adopción por género</li>
+<li>Boxplot de la edad de adopción por tipo de animal</li>
+</ul>
+</blockquote>
+<pre class="r"><code>ggplot(tab.freq, 
+       aes(x = outcometype, y = wdays, 
+           fill = n)) + 
+  geom_tile(colour = &quot;white&quot;) + 
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;steelblue&quot;) + 
+  ylab(NULL) + xlab(NULL) + 
+  ggtitle('Tipos de Egresos')</code></pre>
+<blockquote>
+<ol start="2" style="list-style-type: upper-roman">
+<li>Para este ejercicio usaremos el paquete <code>nycflights13</code> que tiene información de los vuelos que salieron de NYC (e.g. EWR, JFK and LGA) en 2013. El nombre de la base es <code>flights</code>.</li>
+</ol>
 <p>Para completar la informacion de los vuelos existen 4 tablas adicionales que dan información adicional del vuelo y las condiciones del vuelo:</p>
 <ul>
 <li><code>weather</code>: hourly meterological data for each airport</li>
