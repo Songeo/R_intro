@@ -94,6 +94,7 @@ button.code-folding-btn:focus {
 </style>
 
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
@@ -121,6 +122,20 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#introduccion">0. Introducción</a></li>
+<li><a href="#datos-limpios">1. Datos limpios</a><ul>
+<li><a href="#principios">Principios:</a></li>
+<li><a href="#ejemplo">Ejemplo:</a></li>
+<li><a href="#funciones-principales">Funciones principales:</a></li>
+<li><a href="#problemas-comunes">Problemas comúnes:</a></li>
+</ul></li>
+<li><a href="#split---apply---combine">2. Split - Apply - Combine</a></li>
+<li><a href="#caso-nyc-flights">3. CASO NYC FLIGHTS</a></li>
+<li><a href="#referencias">4. Referencias</a></li>
+</ul>
+</div>
 
 <hr />
 <blockquote>
@@ -259,26 +274,26 @@ as.data.frame(ds)</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">tratamientoA</th>
-<th align="left">tratamientoB</th>
+<th></th>
+<th>tratamientoA</th>
+<th>tratamientoB</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Juan Aguirre</td>
-<td align="left">-</td>
-<td align="left">2</td>
+<td>Juan Aguirre</td>
+<td>-</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td align="left">Ana Bernal</td>
-<td align="left">16</td>
-<td align="left">11</td>
+<td>Ana Bernal</td>
+<td>16</td>
+<td>11</td>
 </tr>
 <tr class="odd">
-<td align="left">José López</td>
-<td align="left">3</td>
-<td align="left">1</td>
+<td>José López</td>
+<td>3</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -286,24 +301,24 @@ as.data.frame(ds)</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="left">Juan Aguirre</th>
-<th align="left">Ana Bernal</th>
-<th align="left">José López</th>
+<th></th>
+<th>Juan Aguirre</th>
+<th>Ana Bernal</th>
+<th>José López</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">tratamientoA</td>
-<td align="left">-</td>
-<td align="left">16</td>
-<td align="left">3</td>
+<td>tratamientoA</td>
+<td>-</td>
+<td>16</td>
+<td>3</td>
 </tr>
 <tr class="even">
-<td align="left">tratamientoB</td>
-<td align="left">2</td>
-<td align="left">11</td>
-<td align="left">1</td>
+<td>tratamientoB</td>
+<td>2</td>
+<td>11</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -324,41 +339,41 @@ as.data.frame(ds)</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">nombre</th>
-<th align="left">tratamiento</th>
-<th align="left">resultado</th>
+<th>nombre</th>
+<th>tratamiento</th>
+<th>resultado</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Juan Aguirre</td>
-<td align="left">a</td>
-<td align="left">-</td>
+<td>Juan Aguirre</td>
+<td>a</td>
+<td>-</td>
 </tr>
 <tr class="even">
-<td align="left">Ana Bernal</td>
-<td align="left">a</td>
-<td align="left">16</td>
+<td>Ana Bernal</td>
+<td>a</td>
+<td>16</td>
 </tr>
 <tr class="odd">
-<td align="left">José López</td>
-<td align="left">a</td>
-<td align="left">3</td>
+<td>José López</td>
+<td>a</td>
+<td>3</td>
 </tr>
 <tr class="even">
-<td align="left">Juan Aguirre</td>
-<td align="left">b</td>
-<td align="left">2</td>
+<td>Juan Aguirre</td>
+<td>b</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="left">Ana Bernal</td>
-<td align="left">b</td>
-<td align="left">11</td>
+<td>Ana Bernal</td>
+<td>b</td>
+<td>11</td>
 </tr>
 <tr class="even">
-<td align="left">José López</td>
-<td align="left">b</td>
-<td align="left">1</td>
+<td>José López</td>
+<td>b</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -1080,8 +1095,9 @@ ggplot(tab.coefs, aes(x = intercept, y = displ,
   ggtitle('Tipos de Egresos')</code></pre>
 <p><br></p>
 </div>
-<div id="caso-nyc-flights" class="section level3">
-<h3>3. CASO NYC FLIGHTS:</h3>
+</div>
+<div id="caso-nyc-flights" class="section level1">
+<h1>3. CASO NYC FLIGHTS</h1>
 <blockquote>
 <p>Para el siguiente ejercicio se usará el paquete <code>nycflights13</code>. Este paquete incluye los datos de los vuelos que salieron de NYC (EWR, JFK and LGA) en 2013. Además tiene información complementaria de el clima, aerolíneas, aviones y aeropuertos.</p>
 <p>El paquete se compone de 5 tablas:</p>
@@ -1115,9 +1131,8 @@ ggplot(tab.coefs, aes(x = intercept, y = displ,
 <p><br></p>
 <p><br></p>
 </div>
-</div>
 <div id="referencias" class="section level1">
-<h1>Referencias</h1>
+<h1>4. Referencias</h1>
 <ul>
 <li><p><strong>Tidy Data</strong>. <em>Hadley Wickham</em>. Journal of Statistical Software. August 2014, Volume 59, Issue 10. <a href="https://www.jstatsoft.org/article/view/v059i10" class="uri">https://www.jstatsoft.org/article/view/v059i10</a></p></li>
 <li><p>R for Data Analysis. Septiembre 2016. <a href="http://r4ds.had.co.nz/wrangle-intro.html" class="uri">http://r4ds.had.co.nz/wrangle-intro.html</a></p></li>
@@ -1142,6 +1157,7 @@ ggplot(tab.coefs, aes(x = intercept, y = displ,
 $(document).ready(function () {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
 });
+
 
 </script>
 
