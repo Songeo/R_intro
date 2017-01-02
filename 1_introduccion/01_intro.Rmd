@@ -139,9 +139,9 @@ organizar, entender, interpretar y extraer información de colecciones de
 datos predominantemente numéricos.
 Hadley Wickham resume estas tareas en el proceso de 
 análisis en el diagrama siguiente:
-
+  
 ![](figures/data-science.png)
-<!-- ![](figures/data-science-explore.png) -->
+
 
 \quad
 
@@ -158,13 +158,13 @@ Esta es la mejor manera de usar [R](https://cran.r-project.org)
 para análisis de datos.
 
 Existen dos formas de instalar paquetes:
-
-* Desde RStudio:
-
-<img src="figures/install_packages.png" width="600px"/>
-
-* Desde la consola:
-
+  
+  * Desde RStudio:
+  
+  <img src="figures/install_packages.png" width="600px"/>
+  
+  * Desde la consola:
+  
 ```{r install_packages, eval=F}
 install.packages('readr')
 ```
@@ -174,7 +174,7 @@ se cargan a la sesión de [R](https://cran.r-project.org)
 mediante `library`. Por 
 ejemplo, para cargar el paquete `readr` que instalamos
 anteriormente, hacemos:
-
+  
 ```{r library}
 library('readr')
 print(read_csv)
@@ -184,8 +184,8 @@ Como el paquete `readr`está cargado en la sesión podemos llamar a la función
 
 Los paquetes básicos que se recomiendan para análisis de datos
 y que utilizaremos son:
-
-1. `readr` y `readxl` para leer datos
+  
+  1. `readr` y `readxl` para leer datos
 2. `tidyr` manipulación de datos
 3. `lubridate` para  manejar fechas
 4. `stringr` para manipular caracteres
@@ -193,11 +193,11 @@ y que utilizaremos son:
 6. `ggplot2` graficar
 
 <img src="figures/HadleyObama.png" width="300px"/>
-
-
-
-
-**Importante**: Los paquetes se instalan una vez únicamente después de descargar
+  
+  
+  
+  
+  **Importante**: Los paquetes se instalan una vez únicamente después de descargar
 una nueva versión de [R](https://cran.r-project.org)](https://cran.r-project.org). Las librerías 
 se carga en cada sesión de [R](https://cran.r-project.org) nueva. 
 
@@ -206,7 +206,7 @@ se carga en cada sesión de [R](https://cran.r-project.org) nueva.
 enlistaron antes.
 
 > `Respuesta`: 
-
+  
 ```{r, echo = T, eval=FALSE}
 # 1a. Una forma de instalar las librerías
 install.packages(readr)
@@ -219,7 +219,7 @@ install.packages(ggplot)
 
 # 1b. Forma alternativa de instalar las librerías (recursivo)
 libs.install <- c('readr', 'readxl', 'lubridate', 'tidyr', 'stringr', 
-  'dplyr', 'ggplot2')
+                  'dplyr', 'ggplot2')
 sapply(libs.install, install.packages)
 
 # 2. Cargar las librerías
@@ -233,18 +233,21 @@ library(ggplot)
 ```
 
 
-<br>
-<br>
 
+
+
+<br>
+<br>
+  
 ### Ayuda en R
-
+  
 Existen diferentes formas de pedir ayuda en [R](https://cran.r-project.org).
 
 * `help.start()`: ayuda en general
 * `help(fun)` o `?fun`: ayuda sobre la función *fun*
 * `apropos("fun")`: lista de funciones que contiene la palabra *fun*
 * `example(fun)`: muestra un ejemplo de la función *fun*
-
+  
 ```{r ejemhelp, eval = F}
 help(read_csv)
 ?read_csv2
@@ -253,8 +256,8 @@ help(read_csv)
 En [R](https://cran.r-project.org) existen viñetas o *vignettes* que 
 incluyen documentación de temas o funciones sobre el paquete y en ocasiones 
 describen ejemplos. Para consultar viñetas:
-
-* `vignette()`: muestra las viñetas disponibles sobre los paquetes instalados.
+  
+  * `vignette()`: muestra las viñetas disponibles sobre los paquetes instalados.
 * `vignette("foo")`: muestra la viñetas del paquete *foo*.
 
 ```{r ejemvignette, eval = F}
@@ -263,7 +266,7 @@ vignette('ggplot2-specs')
 ```
 
 Si lo anterior no funciona se presentan los siguientes recursos:
-
+  
 - Buscar ayuda: Google, [StackOverflow](http://stackoverflow.com/questions/tagged/r).
 
 - [Cheat sheets de RStudio](https://www.rstudio.com/resources/cheatsheets/)
@@ -283,10 +286,10 @@ los reportes en [RPubs](https://rpubs.com/).
 
 <br>
 <br>
-
+  
 ---
-
-### 2. Estructuras de datos
+  
+## 2. Estructuras de datos
 
 En [R](https://cran.r-project.org) se puede trabajar con 
 distintas estructuras de datos, algunas son de una
@@ -301,6 +304,7 @@ En este tutorial, se trabajará principalmente con *vectores* y *data frames*.
 
 <br>
 
+  
 #### a. Vectores
 
 Los vectores son estructras de datos de una dimensión. 
@@ -334,7 +338,7 @@ class(a)
 
 
 * __Vectores lógicos__:
-```{r vecbool}
+  ```{r vecbool}
 bool <- c(T, F, TRUE, FALSE)
 bool
 # clase del vector
@@ -342,7 +346,7 @@ class(bool)
 ```
 
 * __Vectores de caracteres__:
-```{r vecchar}
+  ```{r vecchar}
 fruits <- c("apple", "banana", "orange", "pineapple", "lemon", "kiwi")
 fruits
 class(fruits)
@@ -354,6 +358,7 @@ sobre este tipo de elementos. Más adelante se presenta un
 ejemplo.
 
 <br>
+
 
 
 
@@ -404,7 +409,6 @@ names(fruits) <- NULL
 names(fruits)
 fruits
 ```
-
 
 
 <br>
@@ -486,6 +490,7 @@ c
 
 <br>
 
+
 - Comparaciones: En este tipo de operación se obtiene
 un vector lógico dependiendo si la condición 
 se cumple o no. 
@@ -547,6 +552,9 @@ cumsum(x) # suma acumulada de elemento anterior del vector
 
 <br>
 
+
+
+
 ##### Otros tipos de vectores: 
 
 Existen tipos de vectores con características 
@@ -595,6 +603,9 @@ weekdays(tenweeks) # Día de la semana de cada fecha
 
 <br>
 
+
+
+
 * __Vectores de factores__: este tipo de vector es usado comúnmente 
 para variables categóricas. En R existe la clase **factor** que 
 se asigna con la función homónima `factor()` o `as.factor()`.
@@ -610,9 +621,9 @@ niveles específicos y etiquetas específicas para cada nivel.
 fruits <- c("banana", "apple", "banana", "orange", "pineapple", "lemon", "kiwi", "apple")
 # Vector de caracteres a vector de factores
 fruits.fac <- factor(fruits, 
-                     levels = c("apple", "banana", "orange", "pineapple", "lemon", "kiwi"),
-                     labels = c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi')
-                     )
+                   levels = c("apple", "banana", "orange", "pineapple", "lemon", "kiwi"),
+                   labels = c('manzana', 'platano', 'naranja', 'piña', 'limón', 'kiwi')
+)
 fruits.fac
 # Clase
 class(fruits.fac)
@@ -641,10 +652,10 @@ Observa que pasa.
 
 ```{r, eval= F}
 frutas <- factor(
-  c("pineapple", "apple", "banana", "pineapple", "kiwi", "apple", "kiwi", "kiwi"),
-  levels = c("apple", "banana", "pineapple", "kiwi", "watermelon", "melon"),
-  labels = c('manzana', 'platano', 'piña', 'kiwi', 'sandía', 'melon')
-  )
+c("pineapple", "apple", "banana", "pineapple", "kiwi", "apple", "kiwi", "kiwi"),
+levels = c("apple", "banana", "pineapple", "kiwi", "watermelon", "melon"),
+labels = c('manzana', 'platano', 'piña', 'kiwi', 'sandía', 'melon')
+)
 frutas
 ```
 
@@ -669,6 +680,8 @@ unique(frutas) # tabla de frecuencias para cada elemento del vector
 
 
 
+
+
 #### b. Data Frames
 
 Un __data.frame__ es un conjunto de vectores del mismo tamaño agrupado 
@@ -679,9 +692,9 @@ Por ejemplo:
 
 ```{r dataframe}
 tabla <- data.frame(
-  n = 1:6,
-  frutas = fruits[1:6], 
-  valor = a
+n = 1:6,
+frutas = fruits[1:6], 
+valor = c(1, 2.5, 3, 4.5, 5, 6.9)
 )
 tabla
 ```
@@ -741,21 +754,21 @@ mtcars[mtcars$cyl == 6, ] # Selecciona los carros con número de cilindros mayor
 el mismo número de columnas:
 ```{r dfrbnames}
 rbind(mtcars[str_detect(rownames(mtcars), "Mazda" ), ], 
-      mtcars[str_detect(rownames(mtcars), "Hornet" ), ])
+    mtcars[str_detect(rownames(mtcars), "Hornet" ), ])
 ```
 
 * `cbind` permite unir dos data.frames por columna, si y solo si, tiene el 
 mismo número de renglones:
 ```{r dfcbnames}
 tabla <- data.frame(
-  n = 1:6,
-  frutas = fruits <- c("apple", "banana", "orange", "pineapple", "lemon", "apple"), 
-  valor = runif(6)
+n = 1:6,
+frutas = fruits <- c("apple", "banana", "orange", "pineapple", "lemon", "apple"), 
+valor = runif(6)
 )
 tabla
 tabla.color <-  data.frame(
-  peso = rnorm(6),
-  color =   c('rojo', 'amarillo', 'naranje', 'amarillo', 'amarillo', 'rojo')
+peso = rnorm(6),
+color =   c('rojo', 'amarillo', 'naranje', 'amarillo', 'amarillo', 'rojo')
 )
 tabla.color
 cbind(tabla, tabla.color)
@@ -789,6 +802,11 @@ mean(mtcars[str_detect(rownames(mtcars), "Merc"), "mpg"])
 
 <br>
 
+
+
+
+
+
 #### c. Listas
 
 La lista es una estructura de datos de una dimensión que permite 
@@ -798,8 +816,8 @@ Por ejemplo:
 
 ```{r lista}
 lista <- list( n = 100, x = 'hello', 
-               frutas = fruits, tabla = tabla, 
-               ejemlista = list(a = 15:20, b = 1:5)
+             frutas = fruits, tabla = tabla, 
+             ejemlista = list(a = 15:20, b = 1:5)
 )
 lista
 ```
@@ -835,7 +853,7 @@ son objetos útiles.
 
 ---
 
-### 3. Datos Faltantes
+## 3. Datos Faltantes
 
 En R los datos faltantes se expresan como `NA`.
 La función `is.na()` regresa un vector lógico
@@ -864,16 +882,19 @@ mean(c(4, 2, NA), na.rm = T)
 <br>
 
 
+
+
+
 ---
 
-### 4. Funciones
+## 4. Funciones
 
 Las funciones son una base importante de la programación en R. 
 Veamos un ejemplo:
 
 ```{r funciones}
 wtd_mean <- function(x, wt = rep(1, length(x))) {
-  sum(x * wt) / sum(wt)
+sum(x * wt) / sum(wt)
 }
 wtd_mean(1:10)
 ```
@@ -930,7 +951,11 @@ sapply(x, wtd_mean)
 <br>
 <br>
 
-### 5. Leer y guardar objetos
+
+
+---
+
+## 5. Leer y guardar objetos
 
 Hay muchas maneras de **ingresar** datos en R, 
 un paquete muy conveniente es **readr**. 
@@ -981,10 +1006,14 @@ saveRDS(object = tabla, file = "ejemplo_tabla.Rds")
 
 <br>
 
+
+
+
+
 ---
 
-### EJERCICIO I. Introducción a R
- 
+## Ejercicio I. Introducción a R
+
 > `Ejercicio`: 
 >
 > 1. Leer datos `bnames2.csv`
@@ -1023,8 +1052,8 @@ tab.girl.2005[ tab.girl.2005$percent == max(tab.girl.2005$percent), ]
 
 # 6. 
 MaxName <- function(yr){
-  sub <- bnames[bnames$year == yr & bnames$sex == 'girl',]
-  sub$name[which.max(sub$percent)]
+sub <- bnames[bnames$year == yr & bnames$sex == 'girl',]
+sub$name[which.max(sub$percent)]
 }
 noms.max <- sapply(seq(1988, 2008, by = 2), MaxName)
 names(noms.max) <- seq(1988, 2008, by = 2)
